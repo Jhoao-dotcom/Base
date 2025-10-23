@@ -1,0 +1,76 @@
+Funciones agregadas
+
+ 1. Complejidad algorítmica de funciones agregadas
+En teoría, las funciones agregadas básicas (COUNT, SUM, AVG, MIN, MAX) tienen una complejidad temporal lineal con respecto al número de filas procesadas:
+
+Notación Big-O:
+O(n)
+donde n = número de filas escaneadas.
+
+Esto se debe a que, en el peor de los casos, el motor debe leer cada fila una vez para calcular el resultado.
+Espacio constante: Solo necesitan mantener un acumulador (un número, un contador, etc.), no almacenan todas las filas en memoria. 
+
+2. Impacto del tamaño de la base de datos
+En bases de datos grandes (millones o miles de millones de filas), el cuello de botella no es la complejidad algorítmica, sino:
+
+I/O (lectura de disco): Leer datos del disco es mucho más lento que procesarlos en memoria.
+Índices: Si existen índices en la columna agregada, algunos SGBD pueden usarlos para optimizar.
+Particionamiento: Tablas particionadas permiten escanear solo las particiones relevantes.
+Paralelismo: SGBD modernos (como PostgreSQL, Oracle, SQL Server, BigQuery, Snowflake) ejecutan agregaciones en paralelo.
+3. Optimizaciones en SGBD modernos
+a) Índices y agregación
+Para MIN() y MAX(), si hay un índice ordenado (como un B-tree) en la columna, el SGBD puede obtener el resultado en O(logn) o incluso O(1) (leyendo la primera/última hoja del índice).
+
+Para COUNT(*), en MyISAM (MySQL) se almacena el conteo total, por lo que es O(1) .
+Pero en InnoDB, se requiere un escaneo (aunque con optimizaciones como index-only scan).
+b) Index-only scans
+Si todos los datos necesarios están en un índice (por ejemplo, un índice en (producto, cantidad)), el SGBD no accede a la tabla, reduciendo I/O.
+
+c) Agregación paralela
+SGBD como PostgreSQL 11+, SQL Server, Oracle, y motores en la nube (BigQuery, Redshift, Snowflake) dividen el trabajo entre múltiples núcleos o nodos:
+
+Cada nodo procesa una parte de los datos → O(n/p) , donde p = número de procesadores/nodos.
+Luego se combinan los resultados parciales (reducción).
+d) Materialized Views / Resumen precalculado
+En entornos analíticos (data warehouses), se usan vistas materializadas o tablas de resumen para evitar recalcular agregaciones costosas.
+
+4. Uso de espacio (memoria y disco)
+Memoria: Las agregaciones simples usan poca memoria (solo acumuladores).
+Pero con GROUP BY en grandes conjuntos de datos:
+Se necesita un hash table o árbol para almacenar los grupos.
+En el peor caso: O(k) espacio, donde k = número de grupos distintos.
+Si k es muy grande (ej. GROUP BY user_id en 100M usuarios), puede requerir spill a disco (escritura temporal en disco).
+Disco: Solo si no cabe en memoria (común en agregaciones con millones de grupos).
+5. Diferencias entre SGBD
+PostgreSQL
+    Parallel aggregation, hash aggregation
+      -Usa memoria eficiente; spilla a disco si es necesario
+MySQL (InnoDB)
+    Index-only scans, no paralelismo (hasta 8.0 limitado)
+      -COUNT(*)es lento en tablas grandes sin WHERE
+Oracle
+    Parallel Query, Bitmap indexes para agregación
+      -Muy eficiente en entornos OLAP
+SQL Server
+    Batch mode, columnstore indexes
+      -Columnstore + agregación = extremadamente rápido
+BigQuery / Snowflake
+    Procesamiento distribuido, columnar
+      -Agregaciones en TBs en segundos gracias a arquitectura MPP
+
+6. Notación Big-O en contexto real
+Aunque la complejidad teórica es O(n) , en la práctica:
+
+Con índices: MIN/MAX → O(logn) o O(1)
+Con paralelismo: O(n/p)
+Con almacenamiento columnar: menor constante en O(n) (menos bytes leídos)
+Con caché: si los datos están en buffer pool, evita I/O → mucho más rápido
+Pero asintóticamente, sigue siendo lineal en el peor caso sin optimizaciones.
+
+Recomendaciones para grandes volúmenes
+Usa índices en columnas usadas en WHERE o GROUP BY.
+Evita SELECT *; selecciona solo columnas necesarias.
+En data warehouses, usa tablas columnares.
+Para conteos frecuentes, considera contadores incrementales o vistas materializadas.
+Particiona tablas por fecha u otra dimensión lógica.
+Usa aproximaciones si no necesitas exactitud (ej. APPROX_COUNT_DISTINCT en BigQuery/Snowflake → O(1) espacio, O(n) tiempo con menor constante).
