@@ -1,5 +1,27 @@
 Funciones agregadas
+Las funciones agregadas, son los calculos que se pueden realizar con los registros de una base de datos y que esta te devuelva el valor indicado
+estas pueden estar agrupadas con un group by y having, como filtro a usar ya que el where no se usa, dentro de estas estan 
+SUM()
+Calcula la suma total de los valores en una columna numérica.
+Ejemplo: SELECT SUM(precio) FROM productos;
 
+AVG()
+Calcula el promedio de los valores en una columna numérica.
+Ejemplo: SELECT AVG(edad) FROM empleados;
+
+COUNT()
+Cuenta el número de filas en un conjunto de datos.
+Ejemplo: SELECT COUNT(*) FROM clientes;
+
+MAX()
+Devuelve el valor máximo de una columna.
+Ejemplo: SELECT MAX(salario) FROM empleados;
+
+MIN()
+Devuelve el valor mínimo de una columna.
+Ejemplo: SELECT MIN(fecha_nacimiento) FROM usuarios;
+
+INVESTIGACION EN GRANDES ESPACIOS
  1. Complejidad algorítmica de funciones agregadas
 En teoría, las funciones agregadas básicas (COUNT, SUM, AVG, MIN, MAX) tienen una complejidad temporal lineal con respecto al número de filas procesadas:
 
