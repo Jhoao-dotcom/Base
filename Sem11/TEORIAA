@@ -79,7 +79,7 @@ SQL Server
 BigQuery / Snowflake
     Procesamiento distribuido, columnar
       -Agregaciones en TBs en segundos gracias a arquitectura MPP
-
+Espacio temporal
 6. Notación Big-O en contexto real
 Aunque la complejidad teórica es O(n) , en la práctica:
 
