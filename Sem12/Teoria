@@ -1,0 +1,39 @@
+SUBCONSULTAS 
+    IN Y EXISTS (FUNCIONES DE FECHA Y CADENA)
+
+OPERADOR IN Y EXISTS
+El operador IN se utiliza para filtrar registros que coinciden con uno de varios valores posibles en una lista.
+    Usos comunes:
+    Comparar un valor con una lista fija.
+    Comparar un valor con los resultados de una subconsulta:
+El operador EXISTS se usa para verificar si una subconsulta devuelve al menos una fila. 
+    Usos comunes:
+    Comprobar si existen registros relacionados
+    Comparar con varias tablas relacionadas
+
+FUNCIONEES DE FECHA
+Day -> Extrae el día (1–31) de una fecha, tambien se pued eusar para filtar registros po un dia del mes especifico
+Month -> Extrae el mes (1-12) de una fecha, ademas de poder filtar o agrupar datos por mes
+Year -> Devuelve el año de una fecha, esta puede ser utilizada para comparar registros en años
+Getdate -> Devuelve la fecha y hora actuales del sistema, se puede usar para insertar la fecha actual a un evento o transaccion y 
+comparar eventos y transacciones con la con el momento presente.
+DateAdd -> Suma o resta un intervalo de tiempo a una fehca en especifico, a traves de (intervalo, cantidad, fecha) para poder 
+calcular fehcas pasadas o futuras
+DateDiff -> Calcula la diferencia entre dos fehcas como el intervalo definido, a traves de (intervalo, fecha_inicial, fecha_final) 
+y se puede usar para calcular la duracion de algun registro o su edad
+
+FUNCIONES DE CADENA 
+Concat -> Permite unir o concatenar dos o más cadenas de texto en una sola. Se puede usar para combinar nombres, apellidos u otros campos de texto en una sola columna.
+Len -> Devuelve la cantidad de caracteres que tiene una cadena de texto. Es útil para validar la longitud de datos o verificar si un campo cumple con una cantidad mínima o máxima de caracteres.
+Substring -> Extrae una parte específica de una cadena de texto, a través de (cadena, posición_inicial, cantidad_caracteres). Se puede usar para obtener fragmentos como códigos, prefijos o iniciales.
+Lower -> Convierte todos los caracteres de una cadena a minúsculas. Es útil para normalizar datos antes de realizar comparaciones o búsquedas insensibles a mayúsculas.
+Upper -> Convierte todos los caracteres de una cadena a mayúsculas. Se puede usar para estandarizar textos o para mostrar valores con formato uniforme.
+Ltrim -> Elimina los espacios en blanco al inicio de una cadena de texto. Se usa para limpiar datos importados o evitar errores en comparaciones.
+Rtrim -> Elimina los espacios en blanco al final de una cadena de texto. Al igual que Ltrim, ayuda a mantener la consistencia en los valores de texto.
+
+LAS FUNCIONES DE CONVERSION DE DATOS 
+Cast -> Convierte un valor de un tipo de dato a otro, manteniendo la estructura del tipo de destino. Se puede usar para transformar números en texto, 
+fechas en texto o viceversa, lo que facilita operaciones y comparaciones entre distintos tipos de datos.
+
+Convert -> También convierte un valor de un tipo de dato a otro, pero ofrece mayor control sobre el formato del resultado, especialmente en conversiones 
+de fechas y números. Además, permite especificar un estilo de formato en algunos motores de base de datos como SQL Server.
