@@ -21,7 +21,7 @@ DateAdd -> Suma o resta un intervalo de tiempo a una fehca en especifico, a trav
 calcular fehcas pasadas o futuras
 DateDiff -> Calcula la diferencia entre dos fehcas como el intervalo definido, a traves de (intervalo, fecha_inicial, fecha_final) 
 y se puede usar para calcular la duracion de algun registro o su edad
-Probablemente
+
 FUNCIONES DE CADENA 
 Concat -> Permite unir o concatenar dos o más cadenas de texto en una sola. Se puede usar para combinar nombres, apellidos u otros campos de texto en una sola columna.
 Len -> Devuelve la cantidad de caracteres que tiene una cadena de texto. Es útil para validar la longitud de datos o verificar si un campo cumple con una cantidad mínima o máxima de caracteres.
