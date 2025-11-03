@@ -1,7 +1,6 @@
 SUBCONSULTAS 
     IN Y EXISTS (FUNCIONES DE FECHA Y CADENA)
 
-
 OPERADOR IN Y EXISTS
 El operador IN se utiliza para filtrar registros que coinciden con uno de varios valores posibles en una lista.
     Usos comunes:
