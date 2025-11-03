@@ -31,9 +31,11 @@ Upper -> Convierte todos los caracteres de una cadena a mayúsculas. Se puede us
 Ltrim -> Elimina los espacios en blanco al inicio de una cadena de texto. Se usa para limpiar datos importados o evitar errores en comparaciones.
 Rtrim -> Elimina los espacios en blanco al final de una cadena de texto. Al igual que Ltrim, ayuda a mantener la consistencia en los valores de texto.
 
+
 LAS FUNCIONES DE CONVERSION DE DATOS 
 Cast -> Convierte un valor de un tipo de dato a otro, manteniendo la estructura del tipo de destino. Se puede usar para transformar números en texto, 
 fechas en texto o viceversa, lo que facilita operaciones y comparaciones entre distintos tipos de datos.
+
 
 Convert -> También convierte un valor de un tipo de dato a otro, pero ofrece mayor control sobre el formato del resultado, especialmente en conversiones 
 de fechas y números. Además, permite especificar un estilo de formato en algunos motores de base de datos como SQL Server.
