@@ -1,0 +1,12 @@
+
+FUNCIONES
+En T-SQL (Transact-SQL), las funciones son objetos de base de datos que permiten encapsular lógica reutilizable 
+(como cálculos, validaciones o consultas) y devolver un valor (o una tabla) como resultado.
+PROCEDIMIENTOS
+Los procedimientos almacenados son similares a las funciones, pero no necesariamente devuelven un valor. Se utilizan para
+ejecutar una serie de comandos SQL
+VARIABLES
+Las variables te permiten almacenar valores temporales (números, textos, fechas, etc.) y usarlos dentro de scripts, funciones o procedimientos.
+MANEJO DE CURSORES
+Un cursor te permite recorrer fila por fila los resultados de una consulta (como un bucle for en otros lenguajes).
+Nota: Los cursores deben usarse solo cuando no se puede resolver algo con SQL set-based, porque son más lentos.
