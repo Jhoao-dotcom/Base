@@ -5,6 +5,7 @@ En T-SQL (Transact-SQL), las funciones son objetos de base de datos que permiten
 PROCEDIMIENTOS
 Los procedimientos almacenados son similares a las funciones, pero no necesariamente devuelven un valor. Se utilizan para
 ejecutar una serie de comandos SQL
+
 VARIABLES
 Las variables te permiten almacenar valores temporales (números, textos, fechas, etc.) y usarlos dentro de scripts, funciones o procedimientos.
 MANEJO DE CURSORES
