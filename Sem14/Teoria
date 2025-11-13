@@ -1,0 +1,15 @@
+## Transacciones
+  Una transacción es una secuencia de operaciones que se ejecutan como una unidad indivisible. En otras palabras, todas las
+  operaciones dentro de una transacción deben completarse con éxito; si alguna de ellas falla, todas las demás deben revertirse
+  para mantener la coherencia de los datos.
+
+## Commit
+  El comando COMMIT se utiliza para confirmar una transacción. Cuando se ejecuta un COMMIT, todos los cambios realizados
+  durante la transacción se hacen permanentes en la base de datos.
+
+## Rollback
+  El comando ROLLBACK se utiliza para deshacer una transacción. Si ocurre algún error o si decides que los cambios realizados
+  no deben aplicarse, puedes usar ROLLBACK para revertir todos los cambios hechos desde el inicio de la transacción.
+
+## Savepoint
+  Permite hacer un rollback parcial a un estado anterior dentro de la misma transacción.
